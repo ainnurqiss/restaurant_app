@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"foodly-app-1234","appId":"1:192062071611:android:d7696a9ad2e9458d320d1e","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"foodly-app-1234","configurations":{"android":"1:192062071611:android:d7696a9ad2e9458d320d1e","ios":"1:192062071611:ios:d0ccef882e2e1ffb320d1e"}}}}}}
