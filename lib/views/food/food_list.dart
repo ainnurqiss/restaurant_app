@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurant_flutter/common/app_style.dart';
-import 'package:restaurant_flutter/common/background_container.dart';
-import 'package:restaurant_flutter/common/reusable_text.dart';
-import 'package:restaurant_flutter/constants/constants.dart';
-import 'package:restaurant_flutter/constants/uidata.dart';
-import 'package:restaurant_flutter/views/food/widget/food_tile.dart';
+import 'package:restaurant_foodly/common/app_style.dart';
+import 'package:restaurant_foodly/common/background_container.dart';
+import 'package:restaurant_foodly/common/reusable_text.dart';
+import 'package:restaurant_foodly/constants/constants.dart';
+import 'package:restaurant_foodly/constants/uidata.dart';
+import 'package:restaurant_foodly/views/food/widgets/food_tile.dart';
 
 class FoodList extends StatelessWidget {
   const FoodList({super.key});
@@ -13,16 +13,15 @@ class FoodList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kSecondary,
+      backgroundColor: Secondary,
       appBar: AppBar(
-        backgroundColor: kSecondary,
+        backgroundColor: Secondary,
         title: ReusableText(
           text: "Food List",
-          style: appStyle(18, kLightWhite, FontWeight.w600),
+          style: appStyle(14, LightWhite, FontWeight.w600),
         ),
       ),
-
-      body: BackgroundContainer(
+      body: BackGroundContainer(
         child: Padding(
           padding: EdgeInsets.only(top: 20.h),
           child: ListView.builder(

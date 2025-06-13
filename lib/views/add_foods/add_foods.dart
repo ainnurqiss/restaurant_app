@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_flutter/common/app_style.dart';
-import 'package:restaurant_flutter/common/background_container.dart';
-import 'package:restaurant_flutter/common/reusable_text.dart';
-import 'package:restaurant_flutter/constants/constants.dart';
-import 'package:restaurant_flutter/views/add_foods/widget/additives_info.dart';
-import 'package:restaurant_flutter/views/add_foods/widget/all_categories.dart';
-import 'package:restaurant_flutter/views/add_foods/widget/food_info.dart';
-import 'package:restaurant_flutter/views/add_foods/widget/image_uploads.dart';
+import 'package:restaurant_foodly/constants/constants.dart';
+import 'package:restaurant_foodly/views/add_foods/widgets/additives_info.dart';
+import 'package:restaurant_foodly/views/add_foods/widgets/all_categories.dart';
+import 'package:restaurant_foodly/views/add_foods/widgets/food_info.dart';
+import 'package:restaurant_foodly/views/add_foods/widgets/image_uploads.dart';
+
+import '../../common/app_style.dart';
+import '../../common/background_container.dart';
+import '../../common/reusable_text.dart';
 
 class AddFoods extends StatefulWidget {
   const AddFoods({super.key});
@@ -22,10 +23,9 @@ class _AddFoodsState extends State<AddFoods> {
   final TextEditingController price = TextEditingController();
   final TextEditingController preparation = TextEditingController();
   final TextEditingController types = TextEditingController();
-  final TextEditingController additiveTitle = TextEditingController();
   final TextEditingController additivePrice = TextEditingController();
+  final TextEditingController additiveTitle = TextEditingController();
 
-  @override
   void dispose() {
     title.dispose();
     description.dispose();
@@ -36,12 +36,11 @@ class _AddFoodsState extends State<AddFoods> {
     super.dispose();
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kSecondary,
+      backgroundColor: Secondary,
       appBar: AppBar(
-        backgroundColor: kSecondary,
+        backgroundColor: Secondary,
         centerTitle: false,
         title: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -49,16 +48,17 @@ class _AddFoodsState extends State<AddFoods> {
           children: [
             ReusableText(
               text: "Welcome to Restaurant Panel",
-              style: appStyle(14, kLightWhite, FontWeight.w600),
+              style: appStyle(14, LightWhite, FontWeight.w600),
             ),
             ReusableText(
-              text: "Fill all the required information to add food items",
-              style: appStyle(12, kLightWhite, FontWeight.normal),
+              text: "Fill all the required info",
+              style: appStyle(12, LightWhite, FontWeight.normal),
             ),
           ],
         ),
       ),
-      body: BackgroundContainer(
+      body: BackGroundContainer(
+        color: Colors.white,
         child: ListView(
           children: [
             SizedBox(
@@ -91,7 +91,6 @@ class _AddFoodsState extends State<AddFoods> {
                       );
                     },
                   ),
-
                   FoodInfo(
                     back: () {
                       _pageController.previousPage(
@@ -111,10 +110,10 @@ class _AddFoodsState extends State<AddFoods> {
                     preparation: preparation,
                     types: types,
                   ),
-
-                  AdditivesInfo(additivePrice: additivePrice, additiveTitle: additiveTitle),
-
-
+                  AdditivesInfo(
+                    additivePrice: additivePrice,
+                    additiveTitle: additiveTitle,
+                  ),
                 ],
               ),
             ),

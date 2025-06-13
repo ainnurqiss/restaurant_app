@@ -50,20 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCRo4yAyRte9jJsqEL_RrcmmH269ujFnis',
-    appId: '1:131132186547:android:413826de20c18bb6c135c6',
-    messagingSenderId: '131132186547',
-    projectId: 'retaurant-flutter',
-    storageBucket: 'retaurant-flutter.firebasestorage.app',
+    apiKey: 'AIzaSyDfXew9nqIglqkdXbmLdtZpPfZTC8XJsQs',
+    appId: '1:192062071611:android:d7696a9ad2e9458d320d1e',
+    messagingSenderId: '192062071611',
+    projectId: 'foodly-app-1234',
+    storageBucket: 'foodly-app-1234.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA3XTfW1KSiANbagkbqJihrhFMFoyrJKtg',
-    appId: '1:131132186547:ios:fd30c8afd9fa5392c135c6',
-    messagingSenderId: '131132186547',
-    projectId: 'retaurant-flutter',
-    storageBucket: 'retaurant-flutter.firebasestorage.app',
-    iosBundleId: 'com.example.restaurantFlutter',
+    apiKey: 'AIzaSyBnyrYdSfHJ03DeS-mc9SlKHnxC9V3UDvo',
+    appId: '1:192062071611:ios:d0ccef882e2e1ffb320d1e',
+    messagingSenderId: '192062071611',
+    projectId: 'foodly-app-1234',
+    storageBucket: 'foodly-app-1234.firebasestorage.app',
+    iosBundleId: 'com.dbestech.restaurantApp',
   );
-
 }

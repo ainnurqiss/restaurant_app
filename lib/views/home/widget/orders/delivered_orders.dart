@@ -9,7 +9,7 @@ class DeliveredOrders extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
-        color: Colors.amber,
+        color: Colors.green,
       ),
     );
   }

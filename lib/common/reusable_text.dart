@@ -8,12 +8,6 @@ class ReusableText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      maxLines: 1,
-      overflow: TextOverflow.fade,
-      softWrap: false,
-      style: style,
-    );
+    return Text(text, maxLines: 1, overflow: TextOverflow.fade, style: style);
   }
 }

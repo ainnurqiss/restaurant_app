@@ -1,9 +1,8 @@
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UploaderController extends GetxController {
@@ -37,6 +36,13 @@ class UploaderController extends GetxController {
   String get imageFourUrl => _imageFourUrl.value;
   String get logoUrl => _logoUrl.value;
   String get coverUrl => _coverUrl.value;
+  set setLogoUrl(String newValue) {
+    _logoUrl.value = newValue;
+  }
+
+  set setCoverUrl(String newValue) {
+    _coverUrl.value = newValue;
+  }
 
   set setImageOneUrl(String newValue) {
     _imageOneUrl.value = newValue;
@@ -58,48 +64,39 @@ class UploaderController extends GetxController {
     images.add(newValue);
   }
 
-  set setLogoUrl(String newValue) {
-    _logoUrl.value = newValue;
-  }
-
-  set setCoverUrl(String newValue) {
-    _coverUrl.value = newValue;
-  }
-
   Future<void> pickImage(String type) async {
     final pickedImage = await _picker.pickImage(source: ImageSource.gallery);
 
     if (pickedImage != null) {
       if (type == 'one') {
         imageOne.value = File(pickedImage.path);
-        uploadImageToFirebase("one");
+        uploadImageToFirebase('one');
         return;
       } else if (type == 'two') {
         imageTwo.value = File(pickedImage.path);
-        uploadImageToFirebase("two");
+        uploadImageToFirebase('two');
         return;
       } else if (type == 'three') {
         imageThree.value = File(pickedImage.path);
-        uploadImageToFirebase("three");
+        uploadImageToFirebase('three');
         return;
       } else if (type == 'four') {
         imageFour.value = File(pickedImage.path);
-        uploadImageToFirebase("four");
+        uploadImageToFirebase('four');
         return;
       } else if (type == 'logo') {
         logo.value = File(pickedImage.path);
-        uploadImageToFirebase("logo");
+        uploadImageToFirebase('logo');
         return;
       } else if (type == 'cover') {
         cover.value = File(pickedImage.path);
-        uploadImageToFirebase("cover");
+        uploadImageToFirebase('cover');
         return;
       }
     }
   }
 
   Future<void> uploadImageToFirebase(String type) async {
-    // Image one
     if (type == 'one') {
       try {
         String filename =
@@ -110,13 +107,10 @@ class UploaderController extends GetxController {
             .putFile(imageOne.value!);
 
         setImageOneUrl = await snapshot.ref.getDownloadURL();
-        setImages = imageOneUrl;
       } catch (e) {
         debugPrint(e.toString());
       }
-    }
-    // Image two
-    else if (type == 'two') {
+    } else if (type == 'two') {
       try {
         String filename =
             'images/${DateTime.now().millisecondsSinceEpoch}_${imageTwo.value!.path.split('/').last}';
@@ -126,13 +120,10 @@ class UploaderController extends GetxController {
             .putFile(imageTwo.value!);
 
         setImageTwoUrl = await snapshot.ref.getDownloadURL();
-        setImages = imageTwoUrl;
       } catch (e) {
         debugPrint(e.toString());
       }
-    }
-    // Image three
-    else if (type == 'three') {
+    } else if (type == 'three') {
       try {
         String filename =
             'images/${DateTime.now().millisecondsSinceEpoch}_${imageThree.value!.path.split('/').last}';
@@ -141,14 +132,11 @@ class UploaderController extends GetxController {
             .child(filename)
             .putFile(imageThree.value!);
 
-        setImageThreeUrl = await snapshot.ref.getDownloadURL();
-        setImages = imageThreeUrl;
+        setImageTwoUrl = await snapshot.ref.getDownloadURL();
       } catch (e) {
         debugPrint(e.toString());
       }
-    }
-    // Image Four
-    else if (type == 'four') {
+    } else if (type == 'four') {
       try {
         String filename =
             'images/${DateTime.now().millisecondsSinceEpoch}_${imageFour.value!.path.split('/').last}';
@@ -157,14 +145,11 @@ class UploaderController extends GetxController {
             .child(filename)
             .putFile(imageFour.value!);
 
-        setImageFourUrl = await snapshot.ref.getDownloadURL();
-        setImages = imageFourUrl;
+        setImageTwoUrl = await snapshot.ref.getDownloadURL();
       } catch (e) {
         debugPrint(e.toString());
       }
-    }
-    // Logo
-    else if (type == 'logo') {
+    } else if (type == 'logo') {
       try {
         String filename =
             'images/${DateTime.now().millisecondsSinceEpoch}_${logo.value!.path.split('/').last}';
@@ -174,13 +159,10 @@ class UploaderController extends GetxController {
             .putFile(logo.value!);
 
         setLogoUrl = await snapshot.ref.getDownloadURL();
-        setImages = logoUrl;
       } catch (e) {
         debugPrint(e.toString());
       }
-    }
-    // Cover
-    else if (type == 'cover') {
+    } else if (type == 'cover') {
       try {
         String filename =
             'images/${DateTime.now().millisecondsSinceEpoch}_${cover.value!.path.split('/').last}';
@@ -190,7 +172,6 @@ class UploaderController extends GetxController {
             .putFile(cover.value!);
 
         setCoverUrl = await snapshot.ref.getDownloadURL();
-        setImages = coverUrl;
       } catch (e) {
         debugPrint(e.toString());
       }
